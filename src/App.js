@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { toHaveFormValues } from "@testing-library/jest-dom/matchers";
+import "./App.css";
+import { getAllPokemon } from "./utils/pokemon";
+import { useEffect } from "react";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [loading, setloading] = useState(true);
+  const initialURL = "https://pokeapi.co/api/v2/pokemon";
+  useEffect(() => {
+    const fetchPokemonData = async () => {
+      let res = await getAllPokemon(initialURL);
+      console.log(res);
+    };
+    fetchPokemonData();
+    setloading(false);
+  }, []);
+  {
+    loading ? (
+      <h1>ロード中</h1>
+    ) : (
+      <>
+        |<h1>ポケモンデータ取得済み</h1>
+      </>
+    );
+  }
+
+  return <div className="App"></div>;
 }
 
 export default App;
