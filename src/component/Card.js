@@ -16,6 +16,25 @@ const Card = ({ pokemon }) => {
         );
       })}
       ;
+      <div className="cardInfo">
+        <div className="cardData">
+          <p className="title">重さ:{pokemon.weight}</p>
+        </div>
+        <div className="cardData">
+          <p className="title">高さ:{pokemon.height}</p>
+        </div>
+        <div className="cardData">
+          <p className="title">高さ:{pokemon.height}</p>
+          <div>タイプ</div>
+      {pokemon.abilities.map((abilities) => {
+        return (
+          <div>
+            <span className="typeName">{abilities.ability.name}</span>
+          </div>
+        );
+      })}
+        </div>
+      </div>
     </div>
   );
 };
