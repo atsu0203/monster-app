@@ -1,4 +1,5 @@
 import React from "react";
+import "./Card.css";
 
 const Card = ({ pokemon }) => {
   return (
@@ -24,15 +25,8 @@ const Card = ({ pokemon }) => {
           <p className="title">高さ:{pokemon.height}</p>
         </div>
         <div className="cardData">
-          <p className="title">高さ:{pokemon.height}</p>
           <div>タイプ</div>
-      {pokemon.abilities.map((abilities) => {
-        return (
-          <div>
-            <span className="typeName">{abilities.ability.name}</span>
-          </div>
-        );
-      })}
+          
         </div>
       </div>
     </div>
